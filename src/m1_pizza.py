@@ -29,7 +29,7 @@ def main():
 
     run_test_generate_points_on_circle()
     run_test_draw_points_on_circle()
-    # run_test_pizza()
+    run_test_pizza()
     # run_test_polygon()
     # run_test_fancy_polygon()
 
@@ -302,6 +302,7 @@ def run_test_pizza():
     window = rg.RoseWindow(400, 400, title)
     circle = rg.Circle(rg.Point(200, 200), 150)
     circle.outline_thickness = 3
+    circle.fill_color = 'yellow'
     pizza(window, circle, 200, 'black', 1)
     window.close_on_mouse_click()
 
@@ -335,7 +336,7 @@ def pizza(window, circle, number_of_slices, color, thickness):
       :type thickness:        int
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -343,6 +344,24 @@ def pizza(window, circle, number_of_slices, color, thickness):
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
     # ------------------------------------------------------------------
+
+    circle.attach_to(window)
+    seq = generate_points_on_circle(circle,number_of_slices)
+    print(len(seq))
+    if len(seq) % 2 == 0:
+        for k in range(len(seq)//2):
+            line = rg.Line(seq[k],seq[len(seq)//2+k])
+            line.color = color
+            line.thickness = thickness
+            line.attach_to(window)
+    else:
+        for k in range(len(seq)):
+            line = rg.Line(seq[k], circle.center)
+            line.color = color
+            line.thickness = thickness
+            line.attach_to(window)
+
+    window.render()
 
 
 def run_test_polygon():
