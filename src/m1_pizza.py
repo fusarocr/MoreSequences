@@ -621,7 +621,7 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color, th
         line.color = color
         line.thickness = thickness
         line.attach_to(window)
-        print(k - len(seq) // 2 - 1 + hops_to_next_point)
+        
 
     window.render()
 
