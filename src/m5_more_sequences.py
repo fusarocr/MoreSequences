@@ -241,7 +241,7 @@ def index_of_first_negative(numbers):
     for k in range(len(numbers)):
         if numbers[k] < 0:
             return k
-    return -1    
+    return -1
 
 
 def run_test_contains_an_a():
@@ -310,6 +310,10 @@ def contains_an_a(s):
     #   No fair using the   count   or   find   string methods.
     # ------------------------------------------------------------------
 
+    for k in range(len(s)):
+        if s[k] is 'a':
+            return True
+    return False
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
